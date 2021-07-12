@@ -1,10 +1,41 @@
 <html>
   <head>
-    This is what I like.
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function to_ajax() {
+          var queryString = $("form[name=testSendInput]").serialize();
+          $.ajax({
+            type : 'post',
+            url : 'https://script.google.com/macros/s/AKfycbwFziW2V3itTcmVWUCoKXXoP5lhfNnX1AHFKRmT4rbQVDYKnNzOLxwv01r6qX-noCvLBQ/exec',
+            data : queryString,
+            error : function(xhr, status, error) {
+              alert(error);
+            }, 
+            success : function(json) {
+              alert(json);
+            }
+          })
+        }
+    </script>
+    
+    <title>Demo</title>
   </head>
   <body>
     <p style="color:red">Painting..</p>
     
     아... 이게 반영까지 시간이 쵸큼 걸리는 구나.. 바로바로 안되네요..
+    
+    <div>
+       <form name="testSendInput">
+          <input name="name">
+          <input name="email">
+          <input name="phone">
+          <!-- 결제 링크 네이버로가서 500원 결제 - 배송은 무료 배송, 배송형식은 판매자 -->
+          <input type="submit" onclick="to_ajax(); return false;">
+      </form>
+    </div>
+    
+    
+    
   </body>
 </html>
